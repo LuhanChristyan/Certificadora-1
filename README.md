@@ -27,7 +27,7 @@ REPOSITÓRIO DO PROJETO:
 - 
 Código Fonte: 
 
-Primeira entrega(13/04/2024): Video 1
+Primeira entrega(13/04/2024): Video 1 ( linkar video aqui) 
 
 
 INSTALAÇÃO E EXECUÇÃO : 
