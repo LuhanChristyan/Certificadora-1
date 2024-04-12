@@ -21,12 +21,12 @@ Nosso projeto visa simplificar o estudo de Física para jovens estudantes do ens
 
 Dessa forma, tornamos o processo de aprendizado mais acessível e eficaz, incentivando o progresso e contribuindo para uma melhor educação em Física.
 
-BIBLIOTECA:
+Biblioteca:
 -
 Essa aplicação utiliza as técnologias: 
 C++
 
-REPOSITÓRIO DO PROJETO: 
+Repositório do projeto : 
 - 
 Código Fonte: https://github.com/LuhanChristyan/Certificadora-1/blob/main/Código%20fonte
 
