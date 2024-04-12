@@ -4,7 +4,6 @@ Titulo do projeto: 𝓓𝓮𝓼𝓫𝓻𝓪𝓿𝓪𝓷𝓭𝓸 𝓪 𝓕𝓲́�
 
 # 1. Requisitos Funcionais
 
-<p align="justify">A <i>Tabela 1</i> a seguir contém os Requisitos Funcionais (RF) elicitados utizando a técnica de Brainstorm.</p>
 
 | ID   |                                 Equipe                                    |   RA       | 
 | :--: | :-----------------------------------------------------------------------: | :--------: |
