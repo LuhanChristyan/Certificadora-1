@@ -2,7 +2,17 @@
 
 Titulo do projeto: Desbravando a Física: Uma Escalada de Questões.
 
-EQUIPE: Leonardo Rodrigues de Souza , Luhan Christyan Rodrigues, Matheus Alphonse dos Anjos. 
+# 1. Requisitos Funcionais
+
+<p align="justify">A <i>Tabela 1</i> a seguir contém os Requisitos Funcionais (RF) elicitados utizando a técnica de Brainstorm.</p>
+
+| ID   |                                 Equipe                                    |   RA       | 
+| :--: | :-----------------------------------------------------------------------: | :--------: |
+|   01 |              Leonardo Rodrigues de Souza                                  |  2453630   |    
+|   02 |                 Luhan Christyan Rodrigues                                 |  2454220   |   
+|   03 |               Matheus Alphonse dos Anjos.                                 |  2313189   |   
+
+
 
 Link do GitHub: https://github.com/LuhanChristyan/Certificadora-1
 
