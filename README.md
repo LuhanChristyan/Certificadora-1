@@ -8,8 +8,8 @@ Titulo do projeto: Desbravando a Física: Uma Escalada de Questões.
 
 | ID   |                                 Equipe                                    |   RA       | 
 | :--: | :-----------------------------------------------------------------------: | :--------: |
-|   01 |              Leonardo Rodrigues de Souza                                  |  2453630   |    
-|   02 |                 Luhan Christyan Rodrigues                                 |  2454220   |   
+|   01 |              Leonardo Rodrigues de Souza                                  |  2454220   |    
+|   02 |                 Luhan Christyan Rodrigues                                 |  2453630  |   
 |   03 |               Matheus Alphonse dos Anjos.                                 |  2313189   |   
 
 
