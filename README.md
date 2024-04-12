@@ -8,7 +8,7 @@ Titulo do projeto: 𝓓𝓮𝓼𝓫𝓻𝓪𝓿𝓪𝓷𝓭𝓸 𝓪 𝓕𝓲́�
 | ID   |                                 Equipe                                    |   RA       | 
 | :--: | :-----------------------------------------------------------------------: | :--------: |
 |   01 |              Leonardo Rodrigues de Souza                                  |  2313189   |    
-|   02 |              Luhan Christyan Rodrigues                                    |  2453630   |   
+|   02 |             Luhan Christyan Rodrigues                                    |  2453630   |   
 |   03 |              Matheus Alphonse dos Anjos.                                 |  2454220   |   
 
 
