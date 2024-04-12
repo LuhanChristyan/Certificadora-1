@@ -23,6 +23,7 @@ Dessa forma, tornamos o processo de aprendizado mais acessível e eficaz, incent
 
 BIBLIOTECA:
 -
+Essa aplicação utiliza as técnologias: 
 C++
 
 REPOSITÓRIO DO PROJETO: 
@@ -31,16 +32,11 @@ Código Fonte: https://github.com/LuhanChristyan/Certificadora-1/blob/main/Códi
 
 Primeira entrega(13/04/2024): https://drive.google.com/file/d/1JxJYe66V2w6VEYvDmeSGpE5S1WWhRiFA/view?usp=sharing
 
-
-INSTALAÇÃO E EXECUÇÃO : 
--
-
-
-COMO LER O CÓDIGO FONTE:
--
-
-
 COMO DESENVOLVER: 
 -
+Para desenvolver o nosso projeto, você vai: 
 
+- Copiar o código fonte  
+- Colar o código fonte em algum compilador ex: Falcon c++, Dev c++.
+- Compilar e navegar pelas questões utilizando os comandos solicitados pelo programa. 
 
