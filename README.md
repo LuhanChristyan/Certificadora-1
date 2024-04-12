@@ -23,7 +23,7 @@ Dessa forma, tornamos o processo de aprendizado mais acessível e eficaz, incent
 
 BIBLIOTECA:
 -
-C
+C++
 
 REPOSITÓRIO DO PROJETO: 
 - 
