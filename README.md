@@ -36,7 +36,8 @@ COMO DESENVOLVER:
 -
 Para desenvolver o nosso projeto, você vai: 
 
-- Copiar o código fonte  
+- Copiar o código fonte.
 - Colar o código fonte em algum compilador ex: Falcon c++, Dev c++.
-- Compilar e navegar pelas questões utilizando os comandos solicitados pelo programa. 
+- Compilar.
+- Navegar pelas questões utilizando os comandos solicitados pelo programa. 
 
