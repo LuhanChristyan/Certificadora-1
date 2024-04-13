@@ -17,7 +17,7 @@ Link do GitHub: https://github.com/LuhanChristyan/Certificadora-1
 
 DESCRIÇÃO DO PROJETO: 
 -
-Nosso projeto visa simplificar o estudo de Física para jovens estudantes do ensino médio, proporcionando uma progressão de dificuldade gradual. Cada questão é cuidadosamente selecionada para corresponder ao nível de habilidade do estudante, como por exemplo: fácil, médio, díficil, as questões foram pegas no site :  [Toda Matéria](https://www.todamateria.com.br/exercicios/exercicios-de-fisica/) garantindo assim, que eles possam avançar de forma consistente. Isso permite que os estudantes construam uma base sólida de conhecimento, abordando primeiro as questões mais fáceis e progredindo organicamente para desafios mais complexos.
+Nosso projeto visa simplificar o estudo de Física para jovens estudantes do ensino médio, proporcionando uma progressão de dificuldade gradual. Cada questão é cuidadosamente selecionada para corresponder ao nível de habilidade do estudante, como por exemplo: fácil, médio, díficil, as questões foram obtidas no site :  [Toda Matéria](https://www.todamateria.com.br/exercicios/exercicios-de-fisica/) garantindo assim, que eles possam avançar de forma consistente. Isso permite que os estudantes construam uma base sólida de conhecimento, abordando primeiro as questões mais fáceis e progredindo organicamente para desafios mais complexos.
 
 Dessa forma, tornamos o processo de aprendizado mais acessível e eficaz, incentivando o progresso e contribuindo para uma melhor educação em Física.
 
