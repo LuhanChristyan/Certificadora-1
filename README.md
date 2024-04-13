@@ -28,11 +28,9 @@ C++
 
 Repositório do projeto : 
 - 
-Código fonte: [código fonte](https://github.com/LuhanChristyan/Certificadora-1/blob/main/Código%20fonte)
+Código fonte: [C++](https://github.com/LuhanChristyan/Certificadora-1/blob/main/Código%20fonte)
 
-Código Fonte: https://github.com/LuhanChristyan/Certificadora-1/blob/main/Código%20fonte
-
-Primeira entrega(13/04/2024): https://drive.google.com/file/d/1JxJYe66V2w6VEYvDmeSGpE5S1WWhRiFA/view?usp=sharing
+Primeira entrega(13/04/2024): [Vídeo 1] (https://drive.google.com/file/d/1JxJYe66V2w6VEYvDmeSGpE5S1WWhRiFA/view?usp=sharing)
 
 Instalação e Execução: 
 -
