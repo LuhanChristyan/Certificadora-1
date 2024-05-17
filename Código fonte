@@ -10,6 +10,7 @@ struct Problema {
   char dificuldade[10]; 
   char materia[50];
   char resposta[50];
+  int resolvido;
   struct Problema *prox; 
 };
 
@@ -27,141 +28,197 @@ void inverterLista(struct Problema **head) {
 
   *head = prev;
 }
-
+void mostrarLista(struct Problema *head) {
+  struct Problema *temp = head;
+  while (temp != NULL) {
+    printf("Titulo: %s\n", temp->titulo);
+    printf("Dificuldade: %s\n", temp->dificuldade);
+    printf("Materia: %s\n", temp->materia);
+    if (temp->resolvido) {
+      printf("Resposta: %s (Ja resolvido)\n\n", temp->resposta);
+    } else {
+      printf("Resposta: [N/A]\n\n");
+    }
+    temp = temp->prox;
+  }
+}
 int main() {
-  setlocale(LC_ALL, "Portuguese");
+  
+  setlocale(LC_ALL,"Portuguese");
   struct Problema *head = NULL;
   struct Problema *temp = NULL;
 
   temp = (struct Problema *)malloc(sizeof(struct Problema));
-  strcpy(temp->titulo, "\nQual e a velocidade escalar média, em km/h, de uma pessoa que percorre a pé 1200 metros em 20 minutos?");
-  strcpy(temp->dificuldade, "Fácil");
-  strcpy(temp->materia, "Velocidade média");
-  strcpy(temp->resposta, "3,6km/h");
+  strcpy(temp->titulo, "\n10-Qual e a velocidade escalar media, em km/h, de uma pessoa que percorre a pe 1200 m em 20 min?");
+  strcpy(temp->dificuldade, "Facil");
+  strcpy(temp->materia, "Velocidade media");
+  strcpy(temp->resposta, "3,6km/h");  
+  temp->resolvido = 0;
   temp->prox = head;
   head = temp;
 
   temp = (struct Problema *)malloc(sizeof(struct Problema));
-  strcpy(temp->titulo, "Considere as afirmações abaixo:\nI. Em uma transformação isobárica não varia a pressão.\nII. Em uma transformação isocórica não vária o volume.\nIII. Em uma transformação isométrica não vária a temperatura.");
-  strcpy(temp->dificuldade, "Fácil");
-  strcpy(temp->materia, "Termodinâmica");
-  strcpy(temp->resposta, "I e II são verdadeiras.");
+  strcpy(temp->titulo, "9-Considere as afirmacoes abaixo:\nI. Em uma transformacao isobarica nÃ£o varia a pressao.\nII. Em uma transformaÃ§Ã£o isocorica nÃ£o varia o volume.\nIII. Em uma transformacao isometrica nao varia a temperatura.");
+  strcpy(temp->dificuldade, "Facil");
+  strcpy(temp->materia, "Termodinamica");
+  strcpy(temp->resposta, "I e II sao verdadeiras.");
+  temp->resolvido = 0;
   temp->prox = head;
   head = temp;
    temp = (struct Problema *)malloc(sizeof(struct Problema));
-  strcpy(temp->titulo, "Calcule a energia cinética de uma bola de massa 0,6 kg ao ser arremessada e atingir uma velocidade de 5 m/s");
-  strcpy(temp->dificuldade, "Fácil");
-  strcpy(temp->materia, "Cinética");
+  strcpy(temp->titulo, "8-Calcule a energia cinÃ©tica de uma bola de massa 0,6 kg ao ser arremessada e atingir uma velocidade de 5 m/s");
+  strcpy(temp->dificuldade, "Facil");
+  strcpy(temp->materia, "Cinetica");
   strcpy(temp->resposta, "7,5J");
+  temp->resolvido = 0;
   temp->prox = head;
   head = temp;
 
   temp = (struct Problema *)malloc(sizeof(struct Problema));
-  strcpy(temp->titulo, "Um carro mantém uma velocidade escalar constante de 72,0 km/h. Em uma hora e dez minutos ele percorre, em quilometros, a distância de:");
-  strcpy(temp->dificuldade, "Médio");
-  strcpy(temp->materia, "Velocidade média");
+  strcpy(temp->titulo, "7-Um carro mantem uma velocidade escalar constante de 72,0 km/h. Em uma hora e dez minutos ele percorre, em quilometros, a distancia de:");
+  strcpy(temp->dificuldade, "Medio");
+  strcpy(temp->materia, "Velocidade media");
   strcpy(temp->resposta, "84km");
+  temp->resolvido = 0;
   temp->prox = head;
   head = temp;
 
   temp = (struct Problema *)malloc(sizeof(struct Problema));
-  strcpy(temp->titulo, "Aplica-se uma força de 20 N a um corpo de massa m. O corpo desloca-se em linha reta com velocidade que aumenta 10 m/s a cada 2 s. Qual o valor, em kg, da massa m?");
-  strcpy(temp->dificuldade, "Médio");
+  strcpy(temp->titulo, "6-Aplica-se uma forÃ§a de 20 N a um corpo de massa m. O corpo desloca-se em linha reta com velocidade que aumenta 10 m/s a cada 2 s. Qual o valor, em kg, da massa m?");
+  strcpy(temp->dificuldade, "Medio");
   strcpy(temp->materia, "Leis de Newton");
   strcpy(temp->resposta, "4kg");
+  temp->resolvido = 0;
   temp->prox = head;
   head = temp;
 
   temp = (struct Problema *)malloc(sizeof(struct Problema));
-  strcpy(temp->titulo, "Determine o trabalho realizado por um corpo de massa 30 kg para que sua energia cinética aumente, ao passo que sua velocidade aumenta de 5 m/s para 25 m/s?");
-  strcpy(temp->dificuldade, "Médio");
-  strcpy(temp->materia, "Cinética");
+  strcpy(temp->titulo, "5-Determine o trabalho realizado por um corpo de massa 30 kg para que sua energia cinetica aumente, ao passo que sua velocidade aumenta de 5 m/s para 25 m/s?");
+  strcpy(temp->dificuldade, "Medio");
+  strcpy(temp->materia, "Cinetica");
   strcpy(temp->resposta, "900J");
+  temp->resolvido = 0;
   temp->prox = head;
   head = temp;
 
   temp = (struct Problema *)malloc(sizeof(struct Problema));
-  strcpy(temp->titulo, "Partindo do instante zero, um veículo sai da posição inicial de 60 metros e chega à  posição final de 10 metros após 5 segundos. Qual a velocidade escalar média do veículo para efetuar esse percurso?");
-  strcpy(temp->dificuldade, "Difícil");
-  strcpy(temp->materia, "Velocidade média");
+  strcpy(temp->titulo, "4-Partindo do instante zero, um veÃ­culo sai da posiÃ§Ã£o inicial de 60 metros e chega a posicao final de 10 metros apos 5 segundos. Qual a velocidade escalar media do veiculo para efetuar esse percurso?");
+  strcpy(temp->dificuldade, "Dificil");
+  strcpy(temp->materia, "Velocidade media");
   strcpy(temp->resposta, "-10m/s");
+  temp->resolvido = 0;
   temp->prox = head;
   head = temp;
 
   temp = (struct Problema *)malloc(sizeof(struct Problema));
-  strcpy(temp->titulo, "Um técnico de manutenção de máquinas pos para funcionar um motor térmico que executa 20 ciclos por segundo. Considerando-se que, em cada ciclo, o motor retira uma quantidade de calor de 1200 J de uma fonte quente e cede 800 J a uma fonte fria, é correto afirmar que o rendimento de cada ciclo é:");
-  strcpy(temp->dificuldade, "Difícil");
-  strcpy(temp->materia, "Termodinâmica");
+  strcpy(temp->titulo, "3-Um tecnico de manutenÃ§Ã£o de maquinas pos para funcionar um motor termico que executa 20 ciclos por segundo. Considerando-se que, em cada ciclo, o motor retira uma quantidade de calor de 1200 J de uma fonte quente e cede 800 J a uma fonte fria, e correto afirmar que o rendimento de cada ciclo e:");
+  strcpy(temp->dificuldade, "Dificil");
+  strcpy(temp->materia, "Termodinamica");
   strcpy(temp->resposta, "33,3%");
+  temp->resolvido = 0;
   temp->prox = head;
   head = temp;
 
   temp = (struct Problema *)malloc(sizeof(struct Problema));
-  strcpy(temp->titulo, "Um motociclista está com sua moto em uma rodovia com radar a uma velocidade de 72 km/h. Após passar pelo radar, ele acelera e sua velocidade chega em 108 km/h. Sabendo que a massa do conjunto moto e motociclista e de 400 kg, determine a variação de energia cinética sofrida pelo motociclista.");
-  strcpy(temp->dificuldade, "Difícil");
-  strcpy(temp->materia, "Cinética");
+  strcpy(temp->titulo, "2-Um motociclista esta com sua moto em uma rodovia com radar a uma velocidade de 72 km/h. Apos passar pelo radar, ele acelera e sua velocidade chega em 108 km/h. Sabendo que a massa do conjunto moto e motociclista e de 400 kg, determine a variaÃ§ao de energia cinetica sofrida pelo motociclista.");
+  strcpy(temp->dificuldade, "Dificil");
+  strcpy(temp->materia, "Cinetica");
   strcpy(temp->resposta, "100kJ");
+  temp->resolvido = 0;
   temp->prox = head;
   head = temp;
 
   temp = (struct Problema *)malloc(sizeof(struct Problema));
-  strcpy(temp->titulo, "Uma pedra de massa 5 kg e lançada verticalmente para cima com uma velocidade inicial de 20 m/s. Desprezando a resistência do ar, determine a altura máxima que a pedra alcança.");
-  strcpy(temp->dificuldade, "Difícil");
-  strcpy(temp->materia, "Cinemática");
+  strcpy(temp->titulo, "1-Uma pedra de massa 5 kg e lanÃ§ada verticalmente para cima com uma velocidade inicial de 20 m/s. Desprezando a resistÃªncia do ar, determine a altura mÃ¡xima que a pedra alcanÃ§a.");
+  strcpy(temp->dificuldade, "Dificil");
+  strcpy(temp->materia, "Cinematica");
   strcpy(temp->resposta, "40m");
+  temp->resolvido = 0;
   temp->prox = head;
   head = temp;
 
-  int escolha;
+int escolha1, escolha2;
   do {
 
     printf("\nMenu:\n");
-    printf("1. Problemas por nivel de dificuldade descendete\n");
+    printf("1. Problemas por nivel de dificuldade descendente\n");
     printf("2. Problemas por nivel de dificuldade ascendente\n");
     printf("3. Sair\n");
     printf("Escolha uma opcao: ");
 
-    while (scanf("%d", &escolha) != 1 || escolha < 1 || escolha > 3) {
-      printf("Opção invalida! Digite um valor entre 1 e 3.\n");
+    while (scanf("%d", &escolha1) != 1 || escolha1 < 1 || escolha1 > 4) {
+      printf("Opcao invalida! Digite um valor entre 1 e 4.\n");
       scanf("%*c");
     }
 
-    switch (escolha) {
+     switch (escolha1) {
       case 1:
-        temp = head;
-        while (temp != NULL) {
-          printf("Título: %s\n", temp->titulo);
-          printf("Dificuldade: %s\n", temp->dificuldade);
-          printf("Matéria: %s\n", temp->materia);
-          printf("Resposta: %s\n\n", temp->resposta);
-          temp = temp->prox;
-        }
+        mostrarLista(head); // Mostrar lista de problemas por dificuldade descendente
         break;
 
       case 2:
         inverterLista(&head);
-        temp = head;
-        while (temp != NULL) {
-          printf("Título: %s\n", temp->titulo);
-          printf("Dificuldade: %s\n", temp->dificuldade);
-          printf("Matéria: %s\n", temp->materia);
-          printf("Resposta: %s\n\n", temp->resposta);
-          temp = temp->prox;
-        }
-        inverterLista(&head);
+        mostrarLista(head); // Mostrar lista de problemas por dificuldade ascendente
+        inverterLista(&head); // Voltar Ã  ordem original da lista
         break;
 
       case 3:
-        temp = head;
-        while (temp != NULL) {
-          struct Problema *proximo = temp->prox;
-          free(temp);
-          temp = proximo;
-        }
-        printf("Saindo...\n");
+        printf("Saindo do Menu 1...\n");
         break;
     }
-  } while (escolha != 3);
+    if (escolha1 != 3) {
+      printf("\nMenu 2:\n");
+      printf("1. Escolher problema para resolver\n");
+      printf("2. Voltar ao Menu 1\n");
+      printf("Escolha uma opcao: ");
+
+      while (scanf("%d", &escolha2) != 1 || escolha2 < 1 || escolha2 > 2) {
+        printf("Opcao invalida! Digite um valor entre 1 e 2.\n");
+        scanf("%*c");
+      }
+      switch (escolha2) {
+          case 1:
+            int numProblema;
+            printf("Digite o numero do problema que deseja resolver: ");
+            scanf("%d", &numProblema);
+
+            temp = head;
+            while (temp != NULL && numProblema > 1) {
+                temp = temp->prox;
+                numProblema--;
+            }
+
+            if (temp != NULL && !temp->resolvido) {
+              char respostaUsuario[50];
+              printf("Resolvendo o problema: %s\n", temp->titulo);
+              printf("Digite sua resposta com a unidade de medida: ");
+              scanf("%s", respostaUsuario);
+
+              if (strcmp(respostaUsuario, temp->resposta) == 0) {
+                  printf("Resposta correta!\n");
+                  temp->resolvido = 1; // Marca como resolvido
+              } else {
+                  printf("Resposta incorreta. Tente novamente\n");
+              }
+            } else if (temp != NULL && temp->resolvido) {
+                char resposta;
+                printf("Este problema ja foi resolvido. Deseja resolve-lo novamente? (S/N): ");
+                scanf(" %c", &resposta);
+                if (resposta == 'S' || resposta == 's') {
+                    temp->resolvido = 0; // Marca como nÃ£o resolvido
+                    printf("Resolvendo o problema novamente: %s\n", temp->titulo);
+                    // LÃ³gica para resolver o problema novamente...
+               }
+            } else {
+               printf("Numero de problema invalido ou problema ja resolvido.\n");
+            }
+          case 2:
+            printf("Voltando ao Menu 1...\n");
+            break;
+          }
+      }
+
+  } while (escolha1 != 3);
 
   return 0;
 }
