@@ -42,4 +42,5 @@ Para desenvolver o nosso projeto, você vai:
 - Colar o código fonte em algum compilador ex: Falcon c++, Dev c++.
 - Compilar.
 - Navegar pelas questões utilizando os comandos solicitados pelo programa. 
+- Obversar as mudanças da atualização do projeto como: Escolha do usuario de começar pela mais fácil ou a mais dificil, avisar o usuário se o problema escolhido já foi resolvido anteriormente e caso já tenha sido resolvido, perguntar se deseja resolver novamente. 
 
