@@ -1,0 +1,432 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <locale.h>
+
+#define MAX_PROBLEMAS 100
+
+struct Problema {
+    char titulo[400];
+    char dificuldade[10]; // "Facil", "Medio", "Dificil"
+    char materia[50];
+    char resposta[100];
+    int resolvido;
+    int tentativas;
+    int pontosBase;
+    struct Problema* prox;
+};
+
+// VariÃ¡veis globais para pontuaÃ§Ã£o e controle de problemas resolvidos
+int pontuacao = 0;
+int problemasResolvidos1 = 0;
+int problemasResolvidos2 = 0;
+int problemasResolvidos3 = 0;
+
+// FunÃ§Ã£o para inverter a lista de problemas
+void inverterLista(struct Problema** head) {
+    struct Problema* prev = NULL;
+    struct Problema* current = *head;
+    struct Problema* next = NULL;
+
+    while (current != NULL) {
+        next = current->prox;
+        current->prox = prev;
+        prev = current;
+        current = next;
+    }
+
+    *head = prev;
+}
+
+// FunÃ§Ã£o para mostrar a lista de problemas
+void mostrarLista(struct Problema* head) {
+    struct Problema* temp = head;
+    int contador = 1;
+    while (temp != NULL) {
+        printf("Problema %d:\n", contador);
+        printf("Titulo: %s\n", temp->titulo);
+        printf("Dificuldade: %s\n", temp->dificuldade);
+        printf("Materia: %s\n", temp->materia);
+        if (temp->resolvido) {
+            printf("Resposta: %s (JÃ¡ resolvido)\n", temp->resposta);
+        } else {
+            printf("Resposta: [N/A]\n");
+        }
+        printf("\n");
+        temp = temp->prox;
+        contador++;
+    }
+}
+
+// FunÃ§Ã£o para mostrar apenas os problemas resolvidos
+void mostrarProblemasResolvidos(struct Problema* head) {
+    struct Problema* temp = head;
+    int contador = 1;
+    int encontrou = 0;
+    while (temp != NULL) {
+        if (temp->resolvido) {
+            printf("Problema %d:\n", contador);
+            printf("Titulo: %s\n", temp->titulo);
+            printf("Dificuldade: %s\n", temp->dificuldade);
+            printf("Materia: %s\n", temp->materia);
+            printf("Resposta: %s\n", temp->resposta);
+            printf("PontuaÃ§Ã£o Base: %d\n", temp->pontosBase);
+            printf("Tentativas: %d\n\n", temp->tentativas);
+            encontrou = 1;
+        }
+        temp = temp->prox;
+        contador++;
+    }
+    if (!encontrou) {
+        printf("Nenhum problema resolvido atÃ© o momento.\n");
+    }
+}
+
+// FunÃ§Ã£o para alterar a dificuldade de um problema resolvido
+void alterarDificuldade(struct Problema* head) {
+    int numProblema;
+    printf("Digite o nÃºmero do problema resolvido que deseja alterar a dificuldade: ");
+    scanf("%d", &numProblema);
+
+    struct Problema* temp = head;
+    int contador = 1;
+    while (temp != NULL && contador < numProblema) {
+        temp = temp->prox;
+        contador++;
+    }
+
+    if (temp != NULL && temp->resolvido) {
+        printf("Problema selecionado: %s\n", temp->titulo);
+        printf("Dificuldade atual: %s\n", temp->dificuldade);
+        printf("Digite a nova dificuldade (Facil, Medio, Dificil): ");
+        char novaDificuldade[10];
+        scanf("%s", novaDificuldade);
+
+        // Validar a nova dificuldade
+        if (strcmp(novaDificuldade, "Facil") != 0 && strcmp(novaDificuldade, "Medio") != 0 && strcmp(novaDificuldade, "Dificil") != 0) {
+            printf("Dificuldade invÃ¡lida. AlteraÃ§Ã£o cancelada.\n");
+            return;
+        }
+
+        // Atualizar contadores de problemas resolvidos
+        if (strcmp(temp->dificuldade, "Facil") == 0) {
+            problemasResolvidos1--;
+        } else if (strcmp(temp->dificuldade, "Medio") == 0) {
+            problemasResolvidos2--;
+        } else if (strcmp(temp->dificuldade, "Dificil") == 0) {
+            problemasResolvidos3--;
+        }
+
+        strcpy(temp->dificuldade, novaDificuldade);
+
+        if (strcmp(temp->dificuldade, "Facil") == 0) {
+            problemasResolvidos1++;
+        } else if (strcmp(temp->dificuldade, "Medio") == 0) {
+            problemasResolvidos2++;
+        } else if (strcmp(temp->dificuldade, "Dificil") == 0) {
+            problemasResolvidos3++;
+        }
+
+        // Atualizar pontos base conforme a nova dificuldade
+        if (strcmp(temp->dificuldade, "Facil") == 0) {
+            temp->pontosBase = 100;
+        } else if (strcmp(temp->dificuldade, "Medio") == 0) {
+            temp->pontosBase = 250;
+        } else if (strcmp(temp->dificuldade, "Dificil") == 0) {
+            temp->pontosBase = 500;
+        }
+
+        printf("Dificuldade alterada para: %s\n", temp->dificuldade);
+    } else {
+        printf("NÃºmero de problema invÃ¡lido ou problema nÃ£o resolvido.\n");
+    }
+}
+
+// FunÃ§Ã£o para atualizar a pontuaÃ§Ã£o do usuÃ¡rio
+void atualizarPontuacao(struct Problema* problema) {
+    if (problema->tentativas > 1 && problema->tentativas <= 5) {
+        problema->pontosBase /= 2;
+    }
+    pontuacao += problema->pontosBase;
+    printf("PontuaÃ§Ã£o atual: %d\n", pontuacao);
+}
+
+// FunÃ§Ã£o para verificar se o usuÃ¡rio pode resolver um determinado problema
+int podeResolverProblema(struct Problema* problema) {
+    if (strcmp(problema->dificuldade, "Facil") == 0) {
+        return 1; // Sempre pode resolver problemas fÃ¡ceis
+    } else if (strcmp(problema->dificuldade, "Medio") == 0) {
+        if (problemasResolvidos1 > 0 || problemasResolvidos3 > 0) {
+            return 1;
+        }
+    } else if (strcmp(problema->dificuldade, "Dificil") == 0) {
+        if (problemasResolvidos2 > 0 || problemasResolvidos3 > 0) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+// FunÃ§Ã£o para resolver um problema
+void resolverProblema(struct Problema* problema) {
+    if (problema->resolvido) {
+        if (problema->tentativas >= 5) {
+            printf("NÃºmero mÃ¡ximo de tentativas jÃ¡ foi atingido para este problema.\n");
+            return;
+        }
+        char resposta;
+        printf("Este problema jÃ¡ foi resolvido. Deseja resolvÃª-lo novamente? (S/N): ");
+        scanf(" %c", &resposta);
+        if (resposta == 'S' || resposta == 's') {
+            problema->tentativas++;
+            printf("Resolvendo o problema novamente: %s\n", problema->titulo);
+            char respostaUsuario[100];
+            printf("Digite sua resposta com a unidade de medida: ");
+            scanf(" %[^\n]%*c", respostaUsuario); // Permite espaÃ§os na resposta
+
+            if (strcmp(respostaUsuario, problema->resposta) == 0) {
+                printf("Resposta correta!\n");
+                atualizarPontuacao(problema);
+            } else {
+                printf("Resposta incorreta. Tente novamente.\n");
+            }
+        }
+    } else {
+        // Verificar se o usuÃ¡rio pode resolver este problema
+        // Esta verificaÃ§Ã£o jÃ¡ deve ser feita antes de chamar esta funÃ§Ã£o
+        char respostaUsuario[100];
+        printf("Resolvendo o problema: %s\n", problema->titulo);
+        printf("Digite sua resposta com a unidade de medida: ");
+        scanf(" %[^\n]%*c", respostaUsuario); // Permite espaÃ§os na resposta
+
+        if (strcmp(respostaUsuario, problema->resposta) == 0) {
+            printf("Resposta correta!\n");
+            problema->resolvido = 1; // Marca como resolvido
+            atualizarPontuacao(problema);
+
+            // Atualizar nÃºmero de problemas resolvidos por nÃ­vel
+            if (strcmp(problema->dificuldade, "Facil") == 0) {
+                problemasResolvidos1++;
+            } else if (strcmp(problema->dificuldade, "Medio") == 0) {
+                problemasResolvidos2++;
+            } else if (strcmp(problema->dificuldade, "Dificil") == 0) {
+                problemasResolvidos3++;
+            }
+        } else {
+            printf("Resposta incorreta. Tente novamente.\n");
+        }
+    }
+}
+
+int main() {
+    setlocale(LC_ALL, "Portuguese");
+    struct Problema* head = NULL;
+    struct Problema* temp = NULL;
+
+    temp = (struct Problema *)malloc(sizeof(struct Problema));
+  strcpy(temp->titulo, "\n10-Qual e a velocidade escalar media, em km/h, de uma pessoa que percorre a pe 1200 m em 20 min?");
+  strcpy(temp->dificuldade, "Facil");
+  strcpy(temp->materia, "Velocidade media");
+  strcpy(temp->resposta, "3,6km/h");  
+  temp->resolvido = 0;
+  temp->tentativas = 0;
+  temp->pontosBase = 100;
+  temp->prox = head;
+  head = temp;
+
+  temp = (struct Problema *)malloc(sizeof(struct Problema));
+  strcpy(temp->titulo, "9-Considere as afirmacoes abaixo:\nI. Em uma transformacao isobarica nÃ£o varia a pressao.\nII. Em uma transformaÃ§Ã£o isocorica nÃ£o varia o volume.\nIII. Em uma transformacao isometrica nao varia a temperatura.");
+  strcpy(temp->dificuldade, "Facil");
+  strcpy(temp->materia, "Termodinamica");
+  strcpy(temp->resposta, "I e II sao verdadeiras.");
+  temp->resolvido = 0;
+  temp->tentativas = 0;
+  temp->pontosBase = 100;
+  temp->prox = head;
+  head = temp;
+
+  temp = (struct Problema *)malloc(sizeof(struct Problema));
+  strcpy(temp->titulo, "8-Calcule a energia cinÃ©tica de uma bola de massa 0,6 kg ao ser arremessada e atingir uma velocidade de 5 m/s");
+  strcpy(temp->dificuldade, "Facil");
+  strcpy(temp->materia, "Cinetica");
+  strcpy(temp->resposta, "7,5J");
+  temp->resolvido = 0;
+  temp->tentativas = 0;
+  temp->pontosBase = 100;
+  temp->prox = head;
+  head = temp;
+
+  temp = (struct Problema *)malloc(sizeof(struct Problema));
+  strcpy(temp->titulo, "7-Um carro mantem uma velocidade escalar constante de 72,0 km/h. Em uma hora e dez minutos ele percorre, em quilometros, a distancia de:");
+  strcpy(temp->dificuldade, "Medio");
+  strcpy(temp->materia, "Velocidade media");
+  strcpy(temp->resposta, "84km");
+  temp->resolvido = 0;
+  temp->tentativas = 0;
+  temp->pontosBase = 250;
+  temp->prox = head;
+  head = temp;
+
+  temp = (struct Problema *)malloc(sizeof(struct Problema));
+  strcpy(temp->titulo, "6-Aplica-se uma forÃ§a de 20 N a um corpo de massa m. O corpo desloca-se em linha reta com velocidade que aumenta 10 m/s a cada 2 s. Qual o valor, em kg, da massa m?");
+  strcpy(temp->dificuldade, "Medio");
+  strcpy(temp->materia, "Leis de Newton");
+  strcpy(temp->resposta, "4kg");
+  temp->resolvido = 0;
+  temp->tentativas = 0;
+  temp->pontosBase = 250;
+  temp->prox = head;
+  head = temp;
+
+  temp = (struct Problema *)malloc(sizeof(struct Problema));
+  strcpy(temp->titulo, "5-Determine o trabalho realizado por um corpo de massa 30 kg para que sua energia cinetica aumente, ao passo que sua velocidade aumenta de 5 m/s para 25 m/s?");
+  strcpy(temp->dificuldade, "Medio");
+  strcpy(temp->materia, "Cinetica");
+  strcpy(temp->resposta, "900J");
+  temp->resolvido = 0;
+  temp->tentativas = 0;
+  temp->pontosBase = 250;
+  temp->prox = head;
+  head = temp;
+
+  temp = (struct Problema *)malloc(sizeof(struct Problema));
+  strcpy(temp->titulo, "4-Partindo do instante zero, um veÃ­culo sai da posiÃ§Ã£o inicial de 60 metros e chega a posicao final de 10 metros apos 5 segundos. Qual a velocidade escalar media do veiculo para efetuar esse percurso?");
+  strcpy(temp->dificuldade, "Dificil");
+  strcpy(temp->materia, "Velocidade media");
+  strcpy(temp->resposta, "-10m/s");
+  temp->resolvido = 0;
+  temp->tentativas = 0;
+  temp->pontosBase = 500;
+  temp->prox = head;
+  head = temp;
+
+  temp = (struct Problema *)malloc(sizeof(struct Problema));
+  strcpy(temp->titulo, "3-Um tecnico de manutenÃ§Ã£o de maquinas pos para funcionar um motor termico que executa 20 ciclos por segundo. Considerando-se que, em cada ciclo, o motor retira uma quantidade de calor de 1200 J de uma fonte quente e cede 800 J a uma fonte fria, e correto afirmar que o rendimento de cada ciclo e:");
+  strcpy(temp->dificuldade, "Dificil");
+  strcpy(temp->materia, "Termodinamica");
+  strcpy(temp->resposta, "33,3%");
+  temp->resolvido = 0;
+  temp->tentativas = 0;
+  temp->pontosBase = 500;
+  temp->prox = head;
+  head = temp;
+
+  temp = (struct Problema *)malloc(sizeof(struct Problema));
+  strcpy(temp->titulo, "2-Um motociclista esta com sua moto em uma rodovia com radar a uma velocidade de 72 km/h. Apos passar pelo radar, ele acelera e sua velocidade chega em 108 km/h. Sabendo que a massa do conjunto moto e motociclista e de 400 kg, determine a variaÃ§ao de energia cinetica sofrida pelo motociclista.");
+  strcpy(temp->dificuldade, "Dificil");
+  strcpy(temp->materia, "Cinetica");
+  strcpy(temp->resposta, "100kJ");
+  temp->resolvido = 0;
+  temp->tentativas = 0;
+  temp->pontosBase = 500;
+  temp->prox = head;
+  head = temp;
+
+  temp = (struct Problema *)malloc(sizeof(struct Problema));
+  strcpy(temp->titulo, "1-Uma pedra de massa 5 kg e lanÃ§ada verticalmente para cima com uma velocidade inicial de 20 m/s. Desprezando a resistÃªncia do ar, determine a altura mÃ¡xima que a pedra alcanÃ§a.");
+  strcpy(temp->dificuldade, "Dificil");
+  strcpy(temp->materia, "Cinematica");
+  strcpy(temp->resposta, "40m");
+  temp->resolvido = 0;
+  temp->tentativas = 0;
+  temp->pontosBase = 500;
+  temp->prox = head;
+  head = temp;
+
+    int escolha1, escolha2;
+    do {
+        printf("\n=================== MENU PRINCIPAL ===================\n");
+        printf("PontuaÃ§Ã£o Atual: %d\n", pontuacao);
+        printf("1. Problemas por nÃ­vel de dificuldade descendente\n");
+        printf("2. Problemas por nÃ­vel de dificuldade ascendente\n");
+        printf("3. Sair\n");
+        printf("Escolha uma opÃ§Ã£o: ");
+
+        while (scanf("%d", &escolha1) != 1 || escolha1 < 1 || escolha1 > 3) {
+            printf("OpÃ§Ã£o invÃ¡lida! Digite um valor entre 1 e 3.\n");
+            scanf("%*c"); // Limpa o buffer
+        }
+
+        switch (escolha1) {
+            case 1:
+                mostrarLista(head);
+                break;
+
+            case 2:
+                inverterLista(&head);
+                mostrarLista(head);
+                inverterLista(&head); // Retorna Ã  ordem original
+                break;
+
+            case 3:
+                printf("Saindo do programa. AtÃ© mais!\n");
+                break;
+        }
+
+        if (escolha1 != 3) {
+            printf("\n=================== MENU SECUNDÃRIO ===================\n");
+            printf("1. Escolher problema para resolver\n");
+            printf("2. Consultar problemas resolvidos\n");
+            printf("3. Alterar dificuldade de um problema resolvido\n");
+            printf("4. Voltar ao Menu Principal\n");
+            printf("Escolha uma opÃ§Ã£o: ");
+
+            while (scanf("%d", &escolha2) != 1 || escolha2 < 1 || escolha2 > 4) {
+                printf("OpÃ§Ã£o invÃ¡lida! Digite um valor entre 1 e 4.\n");
+                scanf("%*c"); // Limpa o buffer
+            }
+
+            switch (escolha2) {
+                case 1: {
+                    int numProblema;
+                    printf("Digite o nÃºmero do problema que deseja resolver: ");
+                    scanf("%d", &numProblema);
+
+                    struct Problema* temp = head;
+                    int contador = 1;
+                    while (temp != NULL && contador < numProblema) {
+                        temp = temp->prox;
+                        contador++;
+                    }
+
+                    if (temp != NULL) {
+                        if (podeResolverProblema(temp)) {
+                            resolverProblema(temp);
+                        } else {
+                            printf("VocÃª ainda nÃ£o pode resolver problemas de nÃ­vel %s.\n", temp->dificuldade);
+                        }
+                    } else {
+                        printf("NÃºmero de problema invÃ¡lido.\n");
+                    }
+                    break;
+                }
+
+                case 2:
+                    printf("\n--- Problemas Resolvidos ---\n");
+                    mostrarProblemasResolvidos(head);
+                    break;
+
+                case 3:
+                    printf("\n--- Alterar Dificuldade ---\n");
+                    mostrarProblemasResolvidos(head);
+                    alterarDificuldade(head);
+                    break;
+
+                case 4:
+                    printf("Voltando ao Menu Principal...\n");
+                    break;
+            }
+        }
+
+    } while (escolha1 != 3);
+
+    // LiberaÃ§Ã£o de memÃ³ria alocada
+    struct Problema* current = head;
+    while (current != NULL) {
+        struct Problema* temp = current;
+        current = current->prox;
+        free(temp);
+    }
+
+    return 0;
+}
