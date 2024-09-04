@@ -420,7 +420,8 @@ int main() {
 
     } while (escolha1 != 3);
 
-    // LiberaÃ§Ã£o de memÃ³ria alocada
+    // Liberação da memória alocada
+
     struct Problema* current = head;
     while (current != NULL) {
         struct Problema* temp = current;
