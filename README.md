@@ -34,6 +34,9 @@ Primeira entrega (13/04/2024): [Vídeo 1](https://drive.google.com/file/d/1JxJYe
 
 Segunda entrega (09/08/2024): [Vídeo 2](https://drive.google.com/file/d/1DWAzUearsIasYJ_9o2FXDgmrP1PQjhsY/view?usp=drive_link)
 
+Terceira entrega (06/09/2024): [Vídeo 3](https://drive.google.com/file/d/1DWAzUearsIasYJ_9o2FXDgmrP1PQjhsY/view?usp=drive_link)
+
+
 Instalação e Execução: 
 -
 Para desenvolver o nosso projeto, você vai: 
