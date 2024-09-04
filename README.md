@@ -28,7 +28,7 @@ C++
 
 Repositório do projeto : 
 - 
-Código fonte (atualizado para segunda entrega): [C++](https://github.com/LuhanChristyan/Certificadora-1/blob/main/Código%20fonte)
+Código fonte (atualizado para terceira entrega): [C++](https://github.com/LuhanChristyan/Certificadora-1/blob/main/Código%20terceira%20entrega)
 
 Primeira entrega (13/04/2024): [Vídeo 1](https://drive.google.com/file/d/1JxJYe66V2w6VEYvDmeSGpE5S1WWhRiFA/view?usp=sharing)
 
