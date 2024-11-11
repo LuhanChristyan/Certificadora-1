@@ -2,7 +2,6 @@
 
 Titulo do projeto: 𝓓𝓮𝓼𝓫𝓻𝓪𝓿𝓪𝓷𝓭𝓸 𝓪 𝓕𝓲́𝓼𝓲𝓬𝓪: 𝓤𝓶𝓪 𝓔𝓼𝓬𝓪𝓵𝓪𝓭𝓪 𝓭𝓮 𝓠𝓾𝓮𝓼𝓽𝓸̃𝓮𝓼.
 
-# 1. Requisitos Funcionais
 
 
 | ID   |                                 Equipe                                    |   RA       | 
